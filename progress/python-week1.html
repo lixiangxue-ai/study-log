@@ -146,8 +146,14 @@ const EX = [
 ];
 
 const KEY = "py_week1_progress_v1";
+/* 默认状态：全部完成（8 个知识点 + 16 道练习全勾） */
 let state = {kp:{}, ex:{}};
-try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s) state = s; }catch(e){}
+KPS.forEach((_, i) => state.kp[i] = true);
+EX.forEach((_, i) => state.ex[i] = true);
+try{
+  const s = JSON.parse(localStorage.getItem(KEY)||"null");
+  if(s) state = s;            /* 本机以前存过则沿用已保存的进度 */
+}catch(e){}
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
 
 /* 渲染知识点 */
