@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python 第一周学习进度看板 · 程序设计基础</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#fff; --ink:#1d2430; --sub:#5b6577;
+    --line:#e3e8f0; --blue:#1a5fb4; --blue-soft:#eaf2fd;
+    --green:#2e7d32; --green-soft:#e9f6ea; --amber:#c05621;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:28px 20px 60px;background:var(--bg);color:var(--ink);
+       font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;line-height:1.65;}
+  .wrap{max-width:980px;margin:0 auto;}
+  header{background:var(--card);border-radius:14px;padding:22px 26px;border:1px solid var(--line);
+         box-shadow:0 2px 10px rgba(26,95,180,.06);}
+  h1{margin:0 0 4px;font-size:22px;letter-spacing:.5px;}
+  .sub{color:var(--sub);font-size:13px;}
+  .bars{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;}
+  .bar{flex:1;min-width:230px;}
+  .bar .lab{display:flex;justify-content:space-between;font-size:13px;color:var(--sub);margin-bottom:6px;}
+  .track{height:10px;background:#eef2f7;border-radius:20px;overflow:hidden;}
+  .fill{height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,#1a5fb4,#4f92e8);transition:width .35s;}
+  .fill.g{background:linear-gradient(90deg,#2e7d32,#66bb6a);}
+  h2{font-size:17px;margin:30px 0 12px;padding-left:11px;border-left:5px solid var(--blue);}
+  .kp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;
+      display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;}
+  .kp label{display:flex;align-items:center;gap:9px;font-size:14px;cursor:pointer;padding:4px 0;}
+  .kp input{width:17px;height:17px;accent-color:var(--green);cursor:pointer;}
+  .kp label.done span{color:var(--sub);text-decoration:line-through;}
+  .group{font-size:14px;color:var(--sub);margin:22px 0 10px;font-weight:bold;letter-spacing:.5px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;
+        transition:border-color .2s,box-shadow .2s;}
+  .card:hover{box-shadow:0 3px 14px rgba(26,95,180,.07);}
+  .card.done{border-color:#bfe0c1;background:#fcfffc;}
+  .head{display:flex;align-items:flex-start;gap:12px;}
+  .head input{width:19px;height:19px;margin-top:4px;accent-color:var(--green);cursor:pointer;flex:none;}
+  .title{font-weight:bold;font-size:15px;}
+  .title.done{color:var(--sub);text-decoration:line-through;}
+  .tags{margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;}
+  .tag{font-size:11.5px;padding:1px 8px;border-radius:20px;background:var(--blue-soft);color:var(--blue);}
+  .tag.k{background:var(--green-soft);color:var(--green);}
+  .tag.d1{background:#eef7ee;color:#2e7d32;}
+  .tag.d2{background:#fff5e6;color:#b06f0b;}
+  .tag.d3{background:#fdecec;color:#b3261e;}
+  .desc{font-size:14px;margin:9px 0 0 31px;color:#333;}
+  .io{margin:9px 0 0 31px;font-family:Consolas,"Courier New",monospace;font-size:12.8px;
+      background:#f7f9fc;border:1px solid var(--line);border-radius:8px;padding:9px 12px;
+      white-space:pre-wrap;color:#37414f;}
+  details{margin:10px 0 0 31px;font-size:13.5px;}
+  summary{cursor:pointer;color:var(--blue);font-size:13px;outline:none;}
+  details pre{margin:8px 0 0;background:#0f1720;color:#d8e2ee;border-radius:8px;padding:11px 13px;
+      overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:12.8px;line-height:1.55;}
+  .foot{margin-top:26px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  button{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:9px 18px;
+         font-size:13.5px;cursor:pointer;}
+  button.ghost{background:#fff;color:var(--blue);border:1px solid #c7d8ee;}
+  .hint{font-size:12.5px;color:var(--sub);}
+  @media(max-width:640px){.kp{grid-template-columns:1fr;} .desc,.io,details{margin-left:0;}}
+  @media print{body{background:#fff;padding:0;} button{display:none;} .card{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Python 第一周学习进度 · 程序设计基础</h1>
+  <div class="sub">对应《Python语言程序设计》第一周「必须掌握的知识」＋ 15 道基础练习 ｜ 勾选自动保存在本机浏览器</div>
+  <div class="bars">
+    <div class="bar">
+      <div class="lab"><span>知识点掌握</span><span id="kpTxt">0 / 8</span></div>
+      <div class="track"><div class="fill" id="kpBar"></div></div>
+    </div>
+    <div class="bar">
+      <div class="lab"><span>练习完成</span><span id="exTxt">0 / 16</span></div>
+      <div class="track"><div class="fill g" id="exBar"></div></div>
+    </div>
+  </div>
+</header>
+
+<h2>一、必须掌握的知识（第一周）</h2>
+<div class="kp" id="kpList"></div>
+
+<h2>二、基础练习（16 道，覆盖数据计算 / 条件判断 / 循环 / 输入输出）</h2>
+<div id="exArea"></div>
+
+<div class="foot">
+  <button onclick="window.print()">打印 / 导出 PDF</button>
+  <button class="ghost" onclick="resetAll()">重置全部进度</button>
+  <span class="hint">提示：每题的「查看参考答案」平时先自己写，卡住了再看效果最好。</span>
+</div>
+
+</div>
+
+<script>
+/* ---------- 知识点（来自第一周教学大纲） ---------- */
+const KPS = [
+  "Python 环境和程序运行",
+  "变量和基本数据类型",
+  "输入、输出和类型转换",
+  "算术、比较和逻辑运算",
+  "if-elif-else 分支结构",
+  "for、while 和 range()",
+  "循环嵌套",
+  "阅读常见错误信息"
+];
+
+/* ---------- 16 道练习 ---------- */
+const EX = [
+  {g:"数据计算与输入输出", t:"两数求和与平均值", d:"输入两个整数（空格分隔），输出它们的和与平均值（平均值保留两位小数）。", io:"输入：4 7\n输出：和:11 平均值:5.50", tags:["输入输出","算术运算"], diff:1,
+   a:`a, b = map(int, input().split())\nprint("和:%d 平均值:%.2f" % (a + b, (a + b) / 2))`},
+  {g:"数据计算与输入输出", t:"圆面积与周长", d:"输入半径 r（可为小数），输出圆的周长与面积，均保留两位小数（π 取 3.14159）。", io:"输入：2\n输出：周长:12.57 面积:12.57", tags:["类型转换","算术运算"], diff:1,
+   a:`r = float(input())\npi = 3.14159\nprint("周长:%.2f 面积:%.2f" % (2 * pi * r, pi * r * r))`},
+  {g:"数据计算与输入输出", t:"摄氏度转华氏度", d:"输入摄氏温度，按 F = C × 9 / 5 + 32 输出华氏温度，保留一位小数。", io:"输入：36.5\n输出：97.7", tags:["类型转换","算术运算"], diff:1,
+   a:`c = float(input())\nprint("%.1f" % (c * 9 / 5 + 32))`},
+  {g:"数据计算与输入输出", t:"秒数换算时分秒", d:"输入总秒数，换算成「时 分 秒」，用空格分隔输出。", io:"输入：3725\n输出：1 2 5", tags:["整除","取余"], diff:2,
+   a:`t = int(input())\nprint(t // 3600, t % 3600 // 60, t % 60)`},
+  {g:"数据计算与输入输出", t:"判断奇偶", d:"输入一个整数，输出「偶数」或「奇数」。", io:"输入：7\n输出：奇数", tags:["条件判断","取余"], diff:1,
+   a:`n = int(input())\nprint("偶数" if n % 2 == 0 else "奇数")`},
+
+  {g:"条件判断", t:"成绩等级", d:"输入 0~100 的成绩：≥90 优秀，80~89 良好，70~79 中等，60~69 及格，<60 不及格。", io:"输入：86\n输出：良好", tags:["if-elif-else"], diff:1,
+   a:`s = int(input())\nif s >= 90:\n    print("优秀")\nelif s >= 80:\n    print("良好")\nelif s >= 70:\n    print("中等")\nelif s >= 60:\n    print("及格")\nelse:\n    print("不及格")`},
+  {g:"条件判断", t:"三数最大值", d:"输入三个整数，输出最大值（要求用条件判断实现，不用 max）。", io:"输入：5 9 2\n输出：9", tags:["if-elif-else","逻辑运算"], diff:2,
+   a:`a, b, c = map(int, input().split())\nm = a\nif b > m:\n    m = b\nif c > m:\n    m = c\nprint(m)`},
+  {g:"条件判断", t:"闰年判断", d:"输入年份，是闰年输出「是」，否则输出「否」。（能被 4 整除且不能被 100 整除，或能被 400 整除）", io:"输入：2024\n输出：是", tags:["条件判断","逻辑运算"], diff:2,
+   a:`y = int(input())\nif (y % 4 == 0 and y % 100 != 0) or y % 400 == 0:\n    print("是")\nelse:\n    print("否")`},
+  {g:"条件判断", t:"三角形能否构成", d:"输入三条边长，能构成三角形输出「可以」，否则输出「不可以」。", io:"输入：3 4 5\n输出：可以", tags:["条件判断","逻辑运算"], diff:2,
+   a:`a, b, c = map(float, input().split())\nif a + b > c and a + c > b and b + c > a:\n    print("可以")\nelse:\n    print("不可以")`},
+
+  {g:"循环", t:"1~100 奇数求和", d:"用循环计算 1~100 中所有奇数的和。", io:"输出：2500", tags:["for","range()"], diff:1,
+   a:`total = 0\nfor i in range(1, 101, 2):\n    total += i\nprint(total)`},
+  {g:"循环", t:"求阶乘", d:"输入正整数 n，用循环计算 n! 并输出。", io:"输入：5\n输出：120", tags:["for","累乘"], diff:1,
+   a:`n = int(input())\nr = 1\nfor i in range(1, n + 1):\n    r *= i\nprint(r)`},
+  {g:"循环", t:"九九乘法表（三角形）", d:"输出下三角乘法表，每行内用空格分隔，形如「1*1=1」。", io:"输出：\n1*1=1\n1*2=2 2*2=4\n...", tags:["循环嵌套"], diff:3,
+   a:`for i in range(1, 10):\n    row = []\n    for j in range(1, i + 1):\n        row.append("%d*%d=%d" % (j, i, i * j))\n    print(" ".join(row))`},
+  {g:"循环", t:"水仙花数", d:"输出所有三位水仙花数（各位数字立方和等于本身），每行一个。", io:"输出：153\n370\n371\n407", tags:["for","数位拆分"], diff:2,
+   a:`for n in range(100, 1000):\n    a, b, c = n // 100, n // 10 % 10, n % 10\n    if a**3 + b**3 + c**3 == n:\n        print(n)`},
+  {g:"循环", t:"质数判断", d:"输入一个大于 1 的整数，是质数输出「是」，否则输出「否」。", io:"输入：29\n输出：是", tags:["for","break"], diff:2,
+   a:`n = int(input())\nflag = True\nfor i in range(2, int(n ** 0.5) + 1):\n    if n % i == 0:\n        flag = False\n        break\nprint("是" if flag else "否")`},
+  {g:"循环", t:"猜数字（while）", d:"程序预设目标数 42。循环读入猜测值，小于目标提示「小了」，大于提示「大了」，等于输出「对了」并结束。", io:"输入：30\n50\n42\n输出：小了\n大了\n对了", tags:["while","break"], diff:2,
+   a:`target = 42\nwhile True:\n    g = int(input())\n    if g < target:\n        print("小了")\n    elif g > target:\n        print("大了")\n    else:\n        print("对了")\n        break`},
+  {g:"循环", t:"成绩统计", d:"输入若干个成绩（空格分隔），输出平均分（两位小数）、最高分、最低分、及格人数。", io:"输入：88 45 92 60 73\n输出：平均分:71.60 最高分:92 最低分:45 及格人数:4", tags:["列表","内置函数"], diff:3,
+   a:`scores = [int(x) for x in input().split()]\nprint("平均分:%.2f 最高分:%d 最低分:%d 及格人数:%d" %\n      (sum(scores) / len(scores), max(scores), min(scores),\n       len([x for x in scores if x >= 60])))`}
+];
+
+const KEY = "py_week1_progress_v1";
+let state = {kp:{}, ex:{}};
+try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s) state = s; }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+/* 渲染知识点 */
+const kpList = document.getElementById("kpList");
+KPS.forEach((name, i) => {
+  const id = "kp" + i;
+  const lab = document.createElement("label");
+  lab.innerHTML = '<input type="checkbox" id="' + id + '"><span>' + name + '</span>';
+  lab.querySelector("input").checked = !!state.kp[i];
+  lab.classList.toggle("done", !!state.kp[i]);
+  lab.querySelector("input").addEventListener("change", e => {
+    state.kp[i] = e.target.checked;
+    lab.classList.toggle("done", e.target.checked);
+    save(); refresh();
+  });
+  kpList.appendChild(lab);
+});
+
+/* 渲染练习 */
+const area = document.getElementById("exArea");
+let curGroup = "";
+EX.forEach((q, i) => {
+  if(q.g !== curGroup){
+    curGroup = q.g;
+    const g = document.createElement("div");
+    g.className = "group";
+    g.textContent = "▍ " + curGroup;
+    area.appendChild(g);
+  }
+  const card = document.createElement("div");
+  card.className = "card";
+  const diffTxt = q.diff === 1 ? "基础" : (q.diff === 2 ? "进阶" : "挑战");
+  card.innerHTML =
+    '<div class="head">' +
+      '<input type="checkbox" id="ex' + i + '">' +
+      '<div><div class="title">' + (i + 1) + '. ' + q.t + '</div>' +
+        '<div class="tags"><span class="tag d' + q.diff + '">' + diffTxt + '</span>' +
+        q.tags.map(t => '<span class="tag k">' + t + '</span>').join("") + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="desc">' + q.d + '</div>' +
+    '<div class="io">' + q.io.replace(/</g, "&lt;") + '</div>' +
+    '<details><summary>查看参考答案</summary><pre>' + q.a.replace(/</g, "&lt;") + '</pre></details>';
+  const cb = card.querySelector("input");
+  cb.checked = !!state.ex[i];
+  card.classList.toggle("done", !!state.ex[i]);
+  card.querySelector(".title").classList.toggle("done", !!state.ex[i]);
+  cb.addEventListener("change", e => {
+    state.ex[i] = e.target.checked;
+    card.classList.toggle("done", e.target.checked);
+    card.querySelector(".title").classList.toggle("done", e.target.checked);
+    save(); refresh();
+  });
+  area.appendChild(card);
+});
+
+/* 进度刷新 */
+function refresh(){
+  const kpN = KPS.filter((_, i) => state.kp[i]).length;
+  const exN = EX.filter((_, i) => state.ex[i]).length;
+  document.getElementById("kpTxt").textContent = kpN + " / " + KPS.length;
+  document.getElementById("exTxt").textContent = exN + " / " + EX.length;
+  document.getElementById("kpBar").style.width = (kpN / KPS.length * 100) + "%";
+  document.getElementById("exBar").style.width = (exN / EX.length * 100) + "%";
+}
+
+function resetAll(){
+  if(!confirm("确定清空所有勾选进度？此操作不可恢复。")) return;
+  state = {kp:{}, ex:{}};
+  save(); location.reload();
+}
+
+refresh();
+</script>
+</body>
+</html>

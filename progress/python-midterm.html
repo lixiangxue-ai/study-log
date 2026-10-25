@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>《Python语言程序设计》期中模拟试卷（在线作答版）</title>
+<style>
+  body{font-family:"Times New Roman","SimSun",serif;max-width:900px;margin:0 auto;padding:24px;color:#111;line-height:1.75;font-size:15px;background:#fff;}
+  h1{text-align:center;font-size:22px;margin:8px 0 4px;}
+  .sub{text-align:center;color:#444;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;border-left:5px solid #1a5fb4;padding-left:8px;margin:26px 0 8px;overflow:hidden;}
+  .q{margin:14px 0;padding:10px 12px;border:1px solid #e3e3e3;border-radius:6px;background:#fff;}
+  .q .stem{font-weight:bold;}
+  .src{display:inline-block;font-size:12px;color:#1a5fb4;background:#eaf2fd;border-radius:3px;padding:0 6px;margin-left:8px;vertical-align:1px;}
+  .opts{margin:6px 0 6px 10px;}
+  .opt{display:block;padding:4px 8px;margin:3px 0;border:1px solid #ddd;border-radius:4px;cursor:pointer;}
+  .opt:hover{background:#f2f7ff;}
+  .opt.sel{background:#e3edfb;border-color:#1a5fb4;font-weight:bold;}
+  .code{font-family:Consolas,"Courier New",monospace;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;padding:8px 10px;white-space:pre;overflow-x:auto;font-size:13.5px;line-height:1.5;margin:6px 0;}
+  .blankIn{display:inline-block;width:110px;border:none;border-bottom:2px solid #1a5fb4;font-family:inherit;font-size:14px;padding:0 4px;background:#f7fbff;text-align:center;}
+  .codeIn{width:100%;min-height:110px;font-family:Consolas,"Courier New",monospace;font-size:13.5px;border:1px solid #b9cbe6;border-radius:4px;padding:8px;background:#fbfdff;resize:vertical;line-height:1.5;box-sizing:border-box;}
+  .ansLabel{font-size:12px;color:#666;margin-top:4px;}
+  .score{float:right;border:1px solid #555;font-size:12px;text-align:center;margin-left:10px;}
+  .score th,.score td{border:1px solid #555;padding:2px 8px;}
+  .score input{width:52px;border:none;text-align:center;font-size:14px;background:#fffbe8;}
+  table.grade{border-collapse:collapse;margin:10px auto;font-size:13px;}
+  table.grade th,table.grade td{border:1px solid #333;padding:4px 12px;text-align:center;}
+  .answer{display:none;} /* 答案与解析只在导出的 Word 中出现，页面上不显示 */
+  .toolbar{position:sticky;top:0;background:#fff;padding:10px 0;border-bottom:1px solid #ccc;text-align:center;z-index:9;}
+  button{background:#1a5fb4;color:#fff;border:none;border-radius:4px;padding:8px 16px;margin:0 6px;cursor:pointer;font-size:14px;}
+  button.green{background:#2e7d32;}
+  .tip{font-size:13px;color:#555;text-align:center;margin-top:4px;}
+  @media print{.toolbar{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="exportWord()">导出 Word 试卷（含作答、判分与逐题解析）</button>
+  <div class="tip">作答自动保存在本机浏览器中。编程题点「运行测试」自查；答案与解析只在导出的 Word 中，页面上不显示。</div>
+</div>
+
+<h1>《Python语言程序设计》期中模拟试卷</h1>
+<div class="sub">命题范围：Python 基础语法、分支与循环、字符串、列表、元组（对应任务 1~4）&nbsp;|&nbsp;满分 100 分 + 附加题 5 分&nbsp;|&nbsp;建议时长 90 分钟</div>
+<div class="meta"><span style="text-align:center;display:block;">班级：<input class="blankIn" style="width:120px" id="stuClass">　姓名：<input class="blankIn" style="width:100px" id="stuName">　学号：<input class="blankIn" style="width:120px" id="stuId"></span></div>
+<table class="grade" id="gradeTable"><tr><th>题号</th><th>一</th><th>二</th><th>三</th><th>附加题</th><th>总分</th></tr>
+<tr><td>得分</td><td class="g1"></td><td class="g2"></td><td class="g3"></td><td class="g5"></td><td class="gT"></td></tr></table>
+
+<h2>一、选择题（每题 2 分，共 20 分）</h2>
+
+<div class="q" data-q="1-1" data-type="choice" data-full="2" data-ans="C"><span class="stem">1.</span> 下列哪一项在 Python 中是合法的标识符（&nbsp;&nbsp;）。<span class="src">来源：2025 年全国高校计算机能力挑战赛真题</span>
+<div class="opts"><label class="opt">A. 2var</label><label class="opt">B. continue</label><label class="opt sel">C. _private</label><label class="opt">D. data-list</label></div><div class="answer">答案：C。解析：标识符不能以数字开头，不能用关键字，不能含连字符。</div></div>
+
+<div class="q" data-q="1-2" data-type="choice" data-full="2" data-ans="D"><span class="stem">2.</span> 执行 <code>s = "ab" * 3</code> 后，下列说法正确的是（&nbsp;&nbsp;）。<span class="src">来源：2025 年挑战赛真题</span>
+<div class="opts"><label class="opt">A. s[5] 未定义</label><label class="opt">B. s[6] 值为 "b"</label><label class="opt">C. s[0] 值为空</label><label class="opt sel">D. s[5] 值为 "b"</label></div><div class="answer">答案：D。解析：s = "ababab"，长度 6，s[5] = "b"。</div></div>
+
+<div class="q" data-q="1-3" data-type="choice" data-full="2" data-ans="B"><span class="stem">3.</span> <code>print(9 ** 0.5 + 10 // 3)</code> 的输出结果是（&nbsp;&nbsp;）。<span class="src">来源：2025 年挑战赛真题</span>
+<div class="opts"><label class="opt">A. 5</label><label class="opt sel">B. 6.0</label><label class="opt">C. 7</label><label class="opt">D. 8</label></div><div class="answer">答案：B。解析：9**0.5 = 3.0（浮点数），10//3 = 3，相加得 6.0。</div></div>
+
+<div class="q" data-q="1-4" data-type="choice" data-full="2" data-ans="A"><span class="stem">4.</span> 执行以下代码后的输出是（&nbsp;&nbsp;）。<span class="src">来源：原创（课件「切片实验室」同型题）</span>
+<div class="code">lst = [1, 2, 3, 4]
+lst[1:] = [7, 8]
+print(lst)</div>
+<div class="opts"><label class="opt sel">A. [1, 7, 8]</label><label class="opt">B. [1, 2, 7, 8]</label><label class="opt">C. [1, 7, 8, 4]</label><label class="opt">D. 报错</label></div><div class="answer">答案：A。解析：切片赋值会用 [7,8] 整体替换 lst[1:]。</div></div>
+
+<div class="q" data-q="1-5" data-type="choice" data-full="2" data-ans="B"><span class="stem">5.</span> 执行以下代码，结果是（&nbsp;&nbsp;）。<span class="src">来源：教材元组不可变性经典题</span>
+<div class="code">t = (1, 2, [3, 4])
+t[2].append(5)
+print(t)</div>
+<div class="opts"><label class="opt">A. 报错</label><label class="opt sel">B. (1, 2, [3, 4, 5])</label><label class="opt">C. (1, 2, [3, 4])</label><label class="opt">D. (1, 2, 5)</label></div><div class="answer">答案：B。解析：元组的元素引用不可变，但列表元素自身内容可变。</div></div>
+
+<div class="q" data-q="1-6" data-type="choice" data-full="2" data-ans="A"><span class="stem">6.</span> 执行 <code>s = [3, 1, 4, 1, 5]; print(s.index(4), s.count(1))</code> 的输出是（&nbsp;&nbsp;）。<span class="src">来源：课件任务 4 原题</span>
+<div class="opts"><label class="opt sel">A. 2 2</label><label class="opt">B. 3 2</label><label class="opt">C. 2 1</label><label class="opt">D. 3 1</label></div><div class="answer">答案：A。解析：4 的下标是 2（从 0 数），1 出现 2 次。</div></div>
+
+<div class="q" data-q="1-7" data-type="choice" data-full="2" data-ans="A"><span class="stem">7.</span> 执行以下代码后的输出是（&nbsp;&nbsp;）。<span class="src">来源：原创（教材循环章节同型题）</span>
+<div class="code">total = 0
+for i in range(1, 10, 3):
+    total += i
+print(total)</div>
+<div class="opts"><label class="opt sel">A. 12</label><label class="opt">B. 15</label><label class="opt">C. 22</label><label class="opt">D. 45</label></div><div class="answer">答案：A。解析：i 依次取 1、4、7，和为 12。</div></div>
+
+<div class="q" data-q="1-8" data-type="choice" data-full="2" data-ans="B"><span class="stem">8.</span> <code>print("Python"[::-1])</code> 的输出是（&nbsp;&nbsp;）。<span class="src">来源：课件切片实验室原题</span>
+<div class="opts"><label class="opt">A. Python</label><label class="opt sel">B. nohtyP</label><label class="opt">C. P</label><label class="opt">D. 报错</label></div><div class="answer">答案：B。解析：步长 -1 表示逆序切片。</div></div>
+
+<div class="q" data-q="1-9" data-type="choice" data-full="2" data-ans="B"><span class="stem">9.</span> 执行 <code>a = (5)</code>、<code>b = (5,)</code> 后，<code>type(a)</code> 与 <code>type(b)</code> 分别是（&nbsp;&nbsp;）。<span class="src">来源：教材原题（单元素元组陷阱）</span>
+<div class="opts"><label class="opt">A. tuple、tuple</label><label class="opt sel">B. int、tuple</label><label class="opt">C. tuple、int</label><label class="opt">D. int、int</label></div><div class="answer">答案：B。解析：单元素元组必须带逗号，(5) 只是加了括号的整数。</div></div>
+
+<div class="q" data-q="1-10" data-type="choice" data-full="2" data-ans="B"><span class="stem">10.</span> 执行以下代码后的输出是（&nbsp;&nbsp;）。<span class="src">来源：原创（append 与 extend 对比）</span>
+<div class="code">a = [1, 2]
+a.append([3, 4])
+print(len(a))</div>
+<div class="opts"><label class="opt">A. 2</label><label class="opt sel">B. 3</label><label class="opt">C. 4</label><label class="opt">D. 报错</label></div><div class="answer">答案：B。解析：append 把 [3,4] 作为 1 个元素追加，len(a) 为 3（若用 extend 则为 4）。</div></div>
+
+<h2>二、填空题（每空 2 分，共 20 分）</h2>
+
+<div class="q" data-q="2-1" data-type="blank" data-full="2" data-ans="4"><span class="stem">1.</span> 表达式 <code>7 // 2 + 7 % 2</code> 的值是 <input class="blankIn" value="4"><span class="src">来源：2025 年挑战赛填空式真题改编</span><div class="answer">答案：4。解析：7//2=3（整除），7%2=1（余数）。</div></div>
+<div class="q" data-q="2-2" data-type="blank" data-full="2" data-ans="tuple"><span class="stem">2.</span> 表达式 <code>type((1, 2))</code> 的结果是 <input class="blankIn" value="tuple"><span class="src">来源：课件任务 4 原题</span><div class="answer">答案：tuple。解析：圆括号包裹的多个值是元组类型。</div></div>
+<div class="q" data-q="2-3" data-type="blank" data-full="2" data-ans="bcd"><span class="stem">3.</span> 已知 <code>s = "abcdef"</code>，则 <code>s[1:4]</code> 的值是 <input class="blankIn" value="bcd"><span class="src">来源：课件切片实验室同型题</span><div class="answer">答案："bcd"。解析：切片含头不含尾，取下标 1、2、3。</div></div>
+<div class="q" data-q="2-4" data-type="blank" data-full="2" data-ans="['a','b','c']"><span class="stem">4.</span> 表达式 <code>list("abc")</code> 的值是 <input class="blankIn" value="['a', 'b', 'c']"><span class="src">来源：教材原题</span><div class="answer">答案：['a', 'b', 'c']。解析：list() 把字符串按字符拆成列表。</div></div>
+<div class="q" data-q="2-5" data-type="blank" data-full="2" data-ans="2"><span class="stem">5.</span> 已知 <code>t = ([1, 2], 3)</code>，则 <code>len(t)</code> 的值是 <input class="blankIn" value="2"><span class="src">来源：原创</span><div class="answer">答案：2。解析：元组长度按顶层元素个数计，不深入列表内部。</div></div>
+<div class="q" data-q="2-6" data-type="blank" data-full="2" data-ans="[1,4,9]"><span class="stem">6.</span> 列表推导式 <code>[i * i for i in range(1, 4)]</code> 的值是 <input class="blankIn" value="[1, 4, 9]"><span class="src">来源：课件任务 4 原题</span><div class="answer">答案：[1, 4, 9]。解析：i 取 1、2、3，各平方后收集。</div></div>
+<div class="q" data-q="2-7" data-type="blank" data-full="2" data-ans="False"><span class="stem">7.</span> 表达式 <code>bool([])</code> 的值是 <input class="blankIn" value="False"><span class="src">来源：任务 2 结课练习判断题改编</span><div class="answer">答案：False。解析：空列表在布尔上下文中为假。</div></div>
+<div class="q" data-q="2-8" data-type="blank" data-full="2" data-ans="abcabc"><span class="stem">8.</span> 已知 <code>s = "abc"</code>，则 <code>s * 2</code> 的值是 <input class="blankIn" value="abcabc"><span class="src">来源：2025 年挑战赛真题第 2 题同型</span><div class="answer">答案："abcabc"。解析：字符串乘整数表示重复拼接。</div></div>
+<div class="q" data-q="2-9" data-type="blank" data-full="2" data-ans="[1,3,5]"><span class="stem">9.</span> 执行 <code>lst = [5, 3, 1]; lst.sort(); print(lst)</code> 输出 <input class="blankIn" value="[1, 3, 5]"><span class="src">来源：课件任务 4 原题</span><div class="answer">答案：[1, 3, 5]。解析：sort() 原地升序排序。</div></div>
+<div class="q" data-q="2-10" data-type="blank" data-full="2" data-ans="[5,3,1]"><span class="stem">10.</span> 表达式 <code>list(range(5, 0, -2))</code> 的值是 <input class="blankIn" value="[5, 3, 1]"><span class="src">来源：原创（教材 range 同型题）</span><div class="answer">答案：[5, 3, 1]。解析：负步长倒着取，不含终止值 0。</div></div>
+
+<h2>三、编程题（共 8 题，60 分。判分依据：给定输入下程序输出正确即可，与写法无关）</h2>
+
+<div class="q" data-q="4-1" data-type="code" data-full="5"><span class="stem">1.（5 分）</span> 从键盘输入两个整数（空格分隔），输出其中较大的数，以及两数之和。<span class="src">来源：原创（入门送分题）</span>
+<div class="code">【输入示例】 3 8
+【输出示例】 较大数:8
+和:11</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn">a, b = map(int, input().split())
+print("较大数:%d" % max(a, b))
+print("和:%d" % (a + b))</textarea>
+<div class="answer">参考答案：
+a, b = map(int, input().split())
+print("较大数:%d" % max(a, b))
+print("和:%d" % (a + b))
+评分：正确读入 2 分；较大数 1.5 分；求和输出 1.5 分。</div></div>
+
+<div class="q" data-q="4-2" data-type="code" data-full="6"><span class="stem">2.（6 分）</span> 从键盘输入一个整数成绩（0~100），按标准输出等级：90 及以上输出「优秀」，80~89 输出「良好」，70~79 输出「中等」，60~69 输出「及格」，60 以下输出「不及格」。<span class="src">来源：原创（分支结构基础题）</span>
+<div class="code">【输入示例】 86
+【输出示例】 良好</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn">score = int(input())
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 70:
+    print("中等")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")</textarea>
+<div class="answer">参考答案：
+score = int(input())
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 70:
+    print("中等")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")
+评分：if-elif 结构正确 2 分；各档阈值正确 4 分（错一档扣 1 分）。</div></div>
+
+<div class="q" data-q="4-3" data-type="code" data-full="6"><span class="stem">3.（6 分）</span> 用循环计算 1~100 中所有奇数的和，输出结果。<span class="src">来源：教材循环章节原题改编</span>
+<div class="code">【输入】无
+【输出示例】 2500</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn">total = 0
+for i in range(1, 101, 2):
+    total += i
+print(total)</textarea>
+<div class="answer">参考答案：
+total = 0
+for i in range(1, 101, 2):
+    total += i
+print(total)
+评分：循环/推导式正确 4 分；输出 2500 得 2 分。</div></div>
+
+<div class="q" data-q="4-4" data-type="code" data-full="7"><span class="stem">4.（7 分）</span> 用循环找出所有的三位数「水仙花数」并逐行输出。水仙花数是指一个三位数，它每一位数字的立方和恰好等于它本身（例如 153 = 1³ + 5³ + 3³）。<span class="src">来源：教材循环章节经典原题</span>
+<div class="code">【输入】无
+【输出示例】（每个水仙花数一行，从小到大）
+153
+370
+371
+407</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn">for n in range(100, 1000):
+    a = n // 100
+    b = n // 10 % 10
+    c = n % 10
+    if a**3 + b**3 + c**3 == n:
+        print(n)</textarea>
+<div class="answer">参考答案：
+for n in range(100, 1000):
+    a = n // 100
+    b = n // 10 % 10
+    c = n % 10
+    if a**3 + b**3 + c**3 == n:
+        print(n)
+评分：三位数遍历 2 分；数位拆分（或字符串法）3 分；立方和判断与输出 2 分。</div></div>
+
+<div class="q" data-q="4-5" data-type="code" data-full="8"><span class="stem">5.（8 分）</span> 从键盘输入若干个成绩（用空格分隔），统计并输出：平均分（保留 2 位小数）、最高分、最低分、及格（≥60）人数。<span class="src">来源：课件任务 4 原题改编</span>
+<div class="code">【输入示例】 88 45 92 60 73
+【输出示例】 平均分:71.60 最高分:92 最低分:45 及格人数:4</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn" style="min-height:150px">data = input().split()
+scores = [int(x) for x in data]
+print("平均分:%.2f" % (sum(scores) / len(scores)))
+print("最高分:%d" % max(scores))
+print("最低分:%d" % min(scores))
+print("及格人数:%d" % len([x for x in scores if x >= 60]))</textarea>
+<div class="answer">参考答案：
+data = input().split()
+scores = [int(x) for x in data]
+print("平均分:%.2f" % (sum(scores)/len(scores)), "最高分:%d" % max(scores), "最低分:%d" % min(scores), "及格人数:%d" % len([x for x in scores if x >= 60]))
+评分：正确读入并转换 2 分；平均分格式 2 分；最值 2 分；及格计数 2 分。</div></div>
+
+<div class="q" data-q="4-6" data-type="code" data-full="8"><span class="stem">6.（8 分）</span> 编写程序：将列表中最小的元素与第一个元素交换位置，输出交换后的列表。要求不使用 sorted 等排序函数。<span class="src">来源：教材第 4 章原题</span>
+<div class="code">【输入示例】 5 3 9 1 7
+【输出示例】 [1, 3, 9, 5, 7]</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn" style="min-height:150px">nums = [int(x) for x in input().split()]
+mi = 0
+for i in range(1, len(nums)):
+    if nums[i] < nums[mi]:
+        mi = i
+nums[0], nums[mi] = nums[mi], nums[0]
+print(nums)</textarea>
+<div class="answer">参考答案：
+nums = [int(x) for x in input().split()]
+mi = 0
+for i in range(1, len(nums)):
+    if nums[i] &lt; nums[mi]:
+        mi = i
+nums[0], nums[mi] = nums[mi], nums[0]
+print(nums)
+评分：找最小下标 4 分；交换 2 分；输出 2 分。</div></div>
+
+<div class="q" data-q="4-7" data-type="code" data-full="9"><span class="stem">7.（9 分）</span> 从键盘输入 n 个整数（空格分隔），把它们组成一个元组 t，输出：① 该元组；② 最大值及其首次出现的下标；③ 元组中整数 3 出现的次数。<span class="src">来源：原创（元组综合应用）</span>
+<div class="code">【输入示例】 4 3 9 3 1
+【输出示例】
+(4, 3, 9, 3, 1)
+最大值:9 首次下标:2
+3的次数:2</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn" style="min-height:160px">nums = [int(x) for x in input().split()]
+t = tuple(nums)
+print(t)
+m = max(t)
+print("最大值:%d 首次下标:%d" % (m, t.index(m)))
+print("3的次数:%d" % t.count(3))</textarea>
+<div class="answer">参考答案：
+nums = [int(x) for x in input().split()]
+t = tuple(nums)
+print(t)
+m = max(t)
+print("最大值:%d 首次下标:%d" % (m, t.index(m)))
+print("3的次数:%d" % t.count(3))
+评分：构造元组 3 分；max 与 index 3 分；count 3 分。</div></div>
+
+<div class="q" data-q="4-8" data-type="code" data-full="11"><span class="stem">8.（11 分）</span> 给定一个字符串 s，找到 s 中最长连续相同字符。若有多个字符连续长度相同，返回最先出现的那个字符。输出该字符、最大长度和该字符所有最长序列的起始位置（下标从 0 开始）。<span class="src">来源：2025 年全国高校计算机能力挑战赛编程题原题（题目 1、题目 3 合并）</span>
+<div class="code">【示例输入1】 aaabbbaaa　　【输出1】 a 3 0
+【示例输入2】 aaabbbaaacccbbb 【输出2】 a 3 0,6
+【示例输入3】 aabbbcc　　【输出3】 b 3 2</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn" style="min-height:180px">s = input().strip()
+max_char, max_len = s[0], 1
+cur_char, cur_len = s[0], 1
+pos = [0]
+for i in range(1, len(s)):
+    if s[i] == cur_char:
+        cur_len += 1
+    else:
+        cur_char, cur_len = s[i], 1
+    if cur_len > max_len:
+        max_len = cur_len
+        max_char = cur_char
+        pos = [i - cur_len + 1]
+    elif cur_len == max_len and cur_char == max_char and i < len(s) - 1:
+        pos.append(i - cur_len + 1)
+print(max_char, max_len, ",".join(map(str, pos)))</textarea>
+<div class="answer">参考答案：
+s = input().strip()
+max_char, max_len = s[0], 1
+cur_char, cur_len = s[0], 1
+pos = [0]
+for i in range(1, len(s)):
+    if s[i] == cur_char:
+        cur_len += 1
+    else:
+        cur_char, cur_len = s[i], 1
+    if cur_len > max_len:
+        max_len = cur_len
+        max_char = cur_char
+        pos = [i - cur_len + 1]
+    elif cur_len == max_len and cur_char == max_char and i &lt; len(s) - 1:
+        pos.append(i - cur_len + 1)
+print(max_char, max_len, ",".join(map(str, pos)))
+评分：单趟扫描结构与连续段维护 5 分；更新最大 3 分；同长起始位置收集 2 分；输出格式 1 分。</div></div>
+
+<h2>附加题（5 分，总分不足 100 时计入）</h2>
+
+<div class="q" data-q="5-1" data-type="code" data-full="5" data-bonus="1"><span class="stem">（附加 5 分）</span> 给定正整数 n（1 ≤ n ≤ 100），求最少需要多少个完全平方数（1, 4, 9, 16, …）相加等于 n，输出这个数量。提示：可用列表 squares 保存 100 以内的平方数，再用多重循环枚举。<span class="src">来源：2025 年全国高校计算机能力挑战赛编程题原题（完美平方数分解，限定小规模）</span>
+<div class="code">【输入示例1】 12　【输出1】 3 （12 = 4+4+4）
+【输入示例2】 13　【输出2】 2 （13 = 4+9）</div>
+<div class="ansLabel">✍️ 你的代码：</div>
+<textarea class="codeIn" style="min-height:150px">n = int(input())
+squares = [0] + [i * i for i in range(1, 11)]
+ans = 4
+for a in squares:
+    for b in squares:
+        for c in squares:
+            for d in squares:
+                if a + b + c + d == n:
+                    ans = min(ans, (a > 0) + (b > 0) + (c > 0) + (d > 0))
+print(ans)</textarea>
+<div class="answer">参考答案（枚举法）：
+n = int(input())
+squares = [0] + [i * i for i in range(1, 11)]
+ans = 4
+for a in squares:
+    for b in squares:
+        for c in squares:
+            for d in squares:
+                if a + b + c + d == n:
+                    ans = min(ans, (a>0) + (b>0) + (c>0) + (d>0))
+print(ans)
+评分：构造平方数列表 1 分；枚举正确 3 分；取最少数量并输出 1 分。</div></div>
+
+<div style="text-align:center;color:#777;font-size:12px;margin-top:24px;">—— 试卷结束 ——</div>
+
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+<script>
+/* ================= 编程题自动运行测试（Skulpt） =================
+   判分原则：不看代码长什么样，只看"给定输入 → 程序输出是否正确"。
+   全部样例通过 → 建议满分；部分通过 → 按比例给建议分；最终由教师确认修改。 */
+var TESTS = {
+  '4-1': [{in:'3 8', out:'较大数:8\n和:11'},{in:'9 2', out:'较大数:9\n和:11'},{in:'5 5', out:'较大数:5\n和:10'}],
+  '4-2': [{in:'86', out:'良好'},{in:'95', out:'优秀'},{in:'60', out:'及格'},{in:'42', out:'不及格'},{in:'73', out:'中等'}],
+  '4-3': [{in:'', out:'2500'}],
+  '4-4': [{in:'', out:'153\n370\n371\n407'}],
+  '4-5': [{in:'88 45 92 60 73', out:'平均分:71.60\n最高分:92\n最低分:45\n及格人数:4'}],
+  '4-6': [{in:'5 3 9 1 7', out:'[1, 3, 9, 5, 7]'}],
+  '4-7': [{in:'4 3 9 3 1', out:'(4, 3, 9, 3, 1)\n最大值:9 首次下标:2\n3的次数:2'}],
+  '4-8': [{in:'aaabbbaaa', out:'a 3 0'},
+          {in:'aaabbbaaacccbbb', out:'a 3 0,6'},
+          {in:'aabbbcc', out:'b 3 2'}],
+  '5-1': [{in:'12', out:'3'},{in:'13', out:'2'},{in:'100', out:'1'},{in:'7', out:'4'}]
+};
+var testResults = {}; // qid -> {passed, total, suggest, detail:[{in,exp,got,ok}]}
+function normOut(s){ return s.replace(/\s+/g,'').replace(/[“”]/g,'"'); }
+
+function runPy(code, inputLines){
+  return new Promise(function(resolve){
+    var out = [], inp = inputLines.slice(), err = null;
+    Sk.configure({
+      output: function(t){ out.push(t); },
+      read: function(x){
+        if(Sk.builtinFiles === undefined || Sk.builtinFiles['files'][x] === undefined)
+          throw "File not found: '" + x + "'";
+        return Sk.builtinFiles['files'][x];
+      },
+      inputfun: function(){ return inp.length ? inp.shift() : ''; },
+      inputfunTakesPrompt: true,
+      __future__: Sk.python3
+    });
+    Sk.misceval.asyncToPromise(function(){
+      return Sk.importMainWithBody('<stdin>', false, code, false);
+    }).catch(function(e){ err = String(e).replace(/<\/?[^>]*>/g,''); });
+    setTimeout(function(){ resolve({out: out.join(''), err: err}); }, 50);
+  });
+}
+
+async function runTestsFor(q){
+  var qid = q.dataset.q, cases = TESTS[qid];
+  var code = getAnswer(q);
+  var panel = q.querySelector('.testPanel');
+  if(!code.trim()){ panel.innerHTML = '<span style="color:#b00">请先在上方代码框写代码</span>'; return; }
+  panel.innerHTML = '<span style="color:#888">运行中…</span>';
+  var detail = [], passed = 0;
+  for(var i = 0; i < cases.length; i++){
+    var c = cases[i];
+    var r = await runPy(code, c.in.split('\n'));
+    var got = r.err ? ('运行错误: ' + r.err) : r.out;
+    var ok = !r.err && normOut(got) === normOut(c.out);
+    if(ok) passed++;
+    detail.push({in:c.in, exp:c.out, got:got, ok:ok});
+  }
+  var full = parseFloat(q.dataset.full);
+  var suggest = Math.round(full * passed / cases.length * 10) / 10;
+  testResults[qid] = {passed: passed, total: cases.length, suggest: suggest, detail: detail};
+  saveLocal();
+  var html = '<b style="color:' + (passed === cases.length ? '#2e7d32' : '#c05621') + '">' +
+    '测试通过 ' + passed + '/' + cases.length + '，建议得分 ' + suggest + '/' + full + '</b>';
+  detail.forEach(function(d, i){
+    html += '<div style="font-size:12.5px;margin-top:4px;border-top:1px dashed #ccc;padding-top:4px;">' +
+      '样例' + (i+1) + ' ' + (d.ok ? '<span style="color:#2e7d32">✓ 通过</span>' : '<span style="color:#b00">✗ 不通过</span>') +
+      '<br>输入：<code>' + escHtml(d.in.replace(/\n/g,'⏎')) + '</code>' +
+      '<br>期望输出：<code>' + escHtml(d.exp.replace(/\n/g,' ⏎ ')) + '</code>';
+    if(!d.ok) html += '<br>实际输出：<code style="color:#b00">' + escHtml(d.got.replace(/\n/g,' ⏎ ')) + '</code>';
+    html += '</div>';
+  });
+  panel.innerHTML = html;
+}
+
+var LS_KEY = 'midterm_py_2026_answers';
+function qAll(){ return Array.from(document.querySelectorAll('.q')); }
+
+/* 选择题交互 */
+document.querySelectorAll('.opts .opt').forEach(function(o){
+  o.addEventListener('click', function(){
+    o.parentElement.querySelectorAll('.opt').forEach(function(x){ x.classList.remove('sel'); });
+    o.classList.add('sel');
+    saveLocal();
+  });
+});
+/* 填空/代码作答防丢 */
+document.addEventListener('input', function(){ clearTimeout(window._t); window._t = setTimeout(saveLocal, 800); });
+
+function getAnswer(q){
+  var t = q.dataset.type;
+  if(t === 'choice'){
+    var s = q.querySelector('.opt.sel');
+    return s ? s.textContent.trim().charAt(0) : '';
+  }
+  if(t === 'blank'){
+    var i = q.querySelector('.blankIn');
+    return i ? i.value.trim() : '';
+  }
+  var ta = q.querySelector('.codeIn');
+  return ta ? ta.value : '';
+}
+function setAnswer(q, v){
+  var t = q.dataset.type;
+  if(t === 'choice'){
+    q.querySelectorAll('.opt').forEach(function(x){
+      x.classList.toggle('sel', x.textContent.trim().charAt(0) === v);
+    });
+  } else if(t === 'blank'){
+    var i = q.querySelector('.blankIn'); if(i && v) i.value = v;
+  } else {
+    var ta = q.querySelector('.codeIn'); if(ta && v) ta.value = v;
+  }
+}
+function norm(s){ return s.replace(/\s+/g,'').replace(/["'"]/g,'').replace(/，/g,',').toLowerCase(); }
+
+function saveLocal(){
+  var data = { stu: {c:v('stuClass'), n:v('stuName'), i:v('stuId')}, q:{}, tests: testResults };
+  qAll().forEach(function(q){ data.q[q.dataset.q] = getAnswer(q); });
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(data)); }catch(e){}
+}
+function restore(){
+  try{
+    var data = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+    if(!data) return;
+    if(data.stu){ sv('stuClass',data.stu.c); sv('stuName',data.stu.n); sv('stuId',data.stu.i); }
+    qAll().forEach(function(q){ var v2 = data.q[q.dataset.q]; if(v2 !== undefined) setAnswer(q, v2); });
+    if(data.tests) for(var k in data.tests) testResults[k] = data.tests[k];
+  }catch(e){}
+}
+function v(id){ return document.getElementById(id).value; }
+function sv(id,val){ if(val) document.getElementById(id).value = val; }
+
+/* 自动判分：选择题+填空题 */
+function autoGrade(){
+  var res = {}; // qid -> score string
+  qAll().forEach(function(q){
+    var t = q.dataset.type, full = parseFloat(q.dataset.full);
+    if(t === 'choice'){
+      var a = getAnswer(q);
+      res[q.dataset.q] = a === q.dataset.ans ? full : (a ? 0 : '');
+    } else if(t === 'blank'){
+      var b = getAnswer(q);
+      res[q.dataset.q] = b && norm(b) === norm(q.dataset.ans) ? full : (b ? 0 : '');
+    }
+  });
+  return res;
+}
+
+/* 导出 Word（含作答、自动判分、建议分与逐题解析） */
+function exportWord(){
+  var teacher = true;
+  saveLocal();
+  var stu = '班级：' + v('stuClass') + '　姓名：' + v('stuName') + '　学号：' + v('stuId');
+  var auto = autoGrade();
+  var secs = {'1':'', '2':'', '4':'', '5':''};
+  qAll().forEach(function(q){
+    var id = q.dataset.q, sec = id.charAt(0);
+    var clone = q.cloneNode(true);
+    var tp = clone.querySelector('.testPanel'); if(tp) tp.remove();
+    clone.querySelectorAll('button').forEach(function(b){ b.remove(); });
+    /* 把交互内容转为静态文本 */
+    var t = q.dataset.type;
+    if(t === 'choice'){
+      var sel = getAnswer(q);
+      var ohtml = '';
+      q.querySelectorAll('.opt').forEach(function(x){
+        var L = x.textContent.trim();
+        var mark = (L.charAt(0) === sel) ? ' ☑' : ' ☐';
+        ohtml += '<div style="margin:2px 0;">' + L + mark + '</div>';
+      });
+      clone.querySelector('.opts').innerHTML = ohtml;
+    } else if(t === 'blank'){
+      var inp = clone.querySelector('.blankIn');
+      var val = getAnswer(q) || '（未作答）';
+      var span = document.createElement('span');
+      span.innerHTML = '<b style="color:#1a5fb4;text-decoration:underline;">' + escHtml(val) + '</b>';
+      inp.replaceWith(span);
+    } else {
+      var ta = clone.querySelector('.codeIn');
+      var code = getAnswer(q);
+      var div = document.createElement('div');
+      div.className = 'code';
+      div.textContent = code ? code : '（未作答）';
+      ta.replaceWith(div);
+    }
+    /* 得分框 */
+    var sc = document.createElement('table');
+    sc.className = 'score';
+    sc.innerHTML = '<tr><td>得分</td></tr><tr><td style="min-width:52px;height:22px;">' + (auto[id] !== undefined ? auto[id] : '') + '</td></tr>';
+    clone.insertBefore(sc, clone.firstChild);
+    /* 客观题在解析中标出自动判分结果 */
+    if(t === 'choice' || t === 'blank'){
+      var ansBox = clone.querySelector('.answer');
+      if(ansBox && auto[id] !== undefined){
+        var verdict = auto[id] > 0 ? '【自动判分：得 ' + auto[id] + ' 分 ✓】' : '【自动判分：0 分 ✗】';
+        ansBox.insertAdjacentHTML('afterbegin', '<b>' + verdict + '</b>　');
+      }
+    }
+    /* 编程题附自动测试结果（建议分） */
+    if(testResults[id]){
+      var tr = testResults[id];
+      var note = document.createElement('div');
+      note.style.cssText = 'font-size:10.5pt;color:#2e7d32;border:1px solid #2e7d32;padding:4px 8px;margin:4px 0;';
+      note.innerHTML = '▶ 自动运行测试：通过 ' + tr.passed + '/' + tr.total + '，<b>建议得分 ' + tr.suggest + '/' + q.dataset.full + '</b>（教师可按评分细则调整）';
+      clone.appendChild(note);
+    }
+    secs[sec] += clone.outerHTML;
+  });
+  /* 评分汇总表 */
+  function secSum(sec){ var s=0,has=false; qAll().forEach(function(q){ if(q.dataset.q.charAt(0)===sec && auto[q.dataset.q]!==undefined && auto[q.dataset.q]!==''){s+=auto[q.dataset.q];has=true;} }); return has?s:''; }
+  function testSum(sec){ var s=0,has=false; qAll().forEach(function(q){ var tr=testResults[q.dataset.q]; if(q.dataset.q.charAt(0)===sec && tr){s+=tr.suggest;has=true;} }); return has?Math.round(s*10)/10:''; }
+  var s1=secSum('1'), s2=secSum('2');
+  var t3=testSum('4')||'';
+  var sumHtml = '<h2>评分汇总表（客观题自动汇总，编程题为运行测试建议分，教师可调整）</h2>' +
+    '<table class="grade"><tr><th>大题</th><th>一、选择题(20)</th><th>二、填空题(20)</th><th>三、编程题(60)</th><th>附加题(5)</th><th>总分(100+5)</th></tr>' +
+    '<tr><td>得分</td><td>' + (s1===''?'':s1+' / 20') + '</td><td>' + (s2===''?'':s2+' / 20') + '</td><td>' + t3 + '</td><td></td><td></td></tr>' +
+    '<tr><td>教师签名</td><td colspan="5"></td></tr></table>';
+  var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>' +
+    'body{font-family:SimSun;font-size:12pt;line-height:1.7;} h1{text-align:center;} h2{font-size:13pt;border-left:4px solid #1a5fb4;padding-left:6px;} ' +
+    '.code{font-family:Consolas;background:#f5f5f5;padding:6px;white-space:pre-wrap;font-size:10.5pt;} .answer{background:#fbfff4;border:1px dashed #7a9b3d;padding:6px;font-size:10.5pt;} ' +
+    '.src{color:#1a5fb4;font-size:9pt;} table{border-collapse:collapse;} th,td{border:1px solid #333;padding:3px 8px;} .score{float:right;font-size:9pt;} .score td{border:1px solid #555;} .ansLabel{font-size:10pt;color:#444;}</style></head><body>' +
+    '<h1>《Python语言程序设计》期中模拟试卷</h1><p style="text-align:center;">在线作答 · 导出评阅卷（含答案解析）</p>' +
+    '<p>' + stu + '　导出时间：' + new Date().toLocaleString() + '</p>' +
+    '<table class="grade"><tr><th>题号</th><th>一</th><th>二</th><th>三</th><th>附加题</th><th>总分</th></tr><tr><td>得分</td><td></td><td></td><td></td><td></td><td></td></tr></table>' +
+    '<h2>一、选择题（每题 2 分，共 20 分）</h2>' + secs['1'] +
+    '<h2>二、填空题（每空 2 分，共 20 分）</h2>' + secs['2'] +
+    '<h2>三、编程题（共 8 题，60 分）</h2>' + secs['4'] +
+    '<h2>附加题（5 分）</h2>' + secs['5'] +
+    sumHtml +
+    '</body></html>';
+  var blob = new Blob(['\ufeff', html], {type:'application/msword'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  var name = (v('stuName') ? v('stuName') + '-' : '') + 'Python期中试卷.doc';
+  a.download = name;
+  a.click();
+}
+function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* 给有测试用例的编程题注入按钮和结果面板（等两个脚本都加载完再注入） */
+window.addEventListener('load', function(){
+  qAll().forEach(function(q){
+    if(!TESTS[q.dataset.q]) return;
+    var btn = document.createElement('button');
+    btn.className = 'green'; btn.style.cssText = 'padding:4px 12px;font-size:13px;margin-top:6px;';
+    btn.textContent = '▶ 运行测试（判分依据：输出比对，与写法无关）';
+    btn.addEventListener('click', function(){ runTestsFor(q); });
+    var panel = document.createElement('div');
+    panel.className = 'testPanel';
+    panel.style.cssText = 'margin-top:6px;font-size:13px;';
+    q.appendChild(btn); q.appendChild(panel);
+    var saved = testResults[q.dataset.q];
+    if(saved) panel.innerHTML = '上次测试：通过 ' + saved.passed + '/' + saved.total + '，建议得分 ' + saved.suggest + '/' + q.dataset.full + '（可重新运行）';
+  });
+});
+restore();
+</script>
+</body>
+</html>
